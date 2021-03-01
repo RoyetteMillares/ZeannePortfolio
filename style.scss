@@ -1,18 +1,114 @@
+$green: #bae67e;
+$white: #ffffff;
+$dark-grey: #444452;
+$off-white: #e7e7e7;
+$night: #171c28;
+$gold: #F5B73E;
+
+
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: 'Indie Flower', cursive;
 }
 body {
-    padding: 9em;
+  margin: 0;
+ -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: $white;
+  color: $dark-grey;
+  line-height: 1.5;
+  width: 100%;
+
+&.night {
+    background-color: $night;
+    color: $white;
+   
+    .switch-wrapper {
+      .sun {
+        background: url('../img/switch/sun-white.svg') no-repeat center;
+        background-size: 100%;
+      }
+      .moon {
+        background: url('../img/switch/moon-white.svg') no-repeat center;
+        background-size: 100%;
+      }
+    }
 }
+}
+.night {
+  background-color: $night;
+  color: $white;
+}
+.type-cont {
+  width: 50%;
+  position: relative;
+  left: 6%;
+  top: 163px;
 h1 {
     font-size: 5em;
-    width: 50%;
-    color: #08408e;
+    width: 100%;
     line-height: 1.7em;
+    position: relative;
+    top: 0;
+    left: 0; 
+    overflow: hidden;
+.boxtwo {
+    position: absolute;
+    background-color: #eaeaea;
+    bottom: 0;
+    display: inline-block;
+    width: 100px;
+    height: 1vw;
+    z-index: -1;
+
+&.night {
+  border: 2px solid $gold;
 }
 
+}
+.hi {
+    display: inline-block;
+
+img{
+    width: 40px;
+    height: 40px;
+    
+}
+.waves {
+    animation-name: waves;
+  
+
+  @keyframes waves {
+    from {
+      transform: none;
+    }
+    15% {
+      transform: translate3d(-20%, 0, 0) rotate3d(0, 0, 1, -10deg);
+    }
+    30% {
+      transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 7deg);
+    }
+    45% {
+      transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -10deg);
+    }
+    60% {
+      transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 5deg);
+    }
+    75% {
+      transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -2deg);
+    }
+    to {
+      transform: none;
+    }
+  }
+}
+
+}
+
+}
+}
 button {
     background: none;
     border: 1px solid black;
@@ -31,6 +127,8 @@ button {
     justify-content: space-between;
     transform: scaleY(0);
     transform-origin: bottom;
+
+
 img {
     float: left;
     width: auto;
@@ -58,7 +156,14 @@ p{
     opacity: 0;
     z-index: -1;
     transform: scale(0);
+   
+  &.night{
+    border: 4px solid $gold;
+  }
 }
+}
+.panel.night{
+  background: $night!important;
 }
 
 #light {
@@ -67,4 +172,76 @@ p{
     top: 0%;
     right: 1%;
 }
-
+.switch-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    @media screen and (max-width: 480px) {
+      top: 10px;
+      right: 20px;
+    }
+    .sun, .moon {
+      width: 17px;
+      height: 17px;
+    }
+    .sun {
+      background: url('/img/switch/sun.svg') no-repeat center;
+      background-size: 100%;
+    }
+    .moon {
+      background: url('/img/switch/moon.svg') no-repeat center;
+      background-size: 100%;
+    }
+    .toggle-wrapper {
+      margin: 10px;
+      #switch {
+        height: 0;
+        width: 0;
+        visibility: hidden;
+        position: absolute;
+        &:checked + label {
+          background: $green;
+        }
+        &:checked + label:after {
+          left: calc(100% - 3px);
+          transform: translateX(-100%);
+        }
+      }
+      label {
+        cursor: pointer;
+        text-indent: -9999px;
+        width: 45px;
+        height: 25px;
+        background: grey;
+        display: block;
+        border-radius: 100px;
+        position: relative;
+        &:after {
+          transition: all 0.2s ease-in-out;
+          content: '';
+          position: absolute;
+          top: 3px;
+          left: 3px;
+          width: 19px;
+          height: 19px;
+          background: #fff;
+          border-radius: 100%;
+        }
+      }
+    }
+  }
+.social-m {
+  position: absolute;
+  top: 83%;
+  left: 1%;
+  display: grid;
+}
+section.video-cont-overlay {
+  position: absolute;
+  top: 100%;
+  left: 3%;
+  min-height: 100vh;
+}
